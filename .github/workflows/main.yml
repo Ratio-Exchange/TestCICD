@@ -15,9 +15,6 @@ jobs:
       acceptEULA: 'YES'
       
     steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: Ratio-Exchange/Ratio_Exchange
-          token: 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
+      - uses: actions/checkout@v3
       - name: Compilation CF Code
         run: /opt/coldfusion/cfusion/bin/cfcompile.sh -cfruntimeuser root -webroot $GITHUB_WORKSPACE -dir $GITHUB_WORKSPACE
