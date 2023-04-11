@@ -16,7 +16,6 @@ jobs:
       
     steps:
       - uses: actions/checkout@v3
-      -
       - name: Compilation CF Code
         #run: /opt/coldfusion/cfusion/bin/cfcompile.sh -cfruntimeuser root -webroot $GITHUB_WORKSPACE -dir $GITHUB_WORKSPACE
         run: |
