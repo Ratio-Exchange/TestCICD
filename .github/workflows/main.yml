@@ -15,8 +15,6 @@ jobs:
       acceptEULA: 'YES'
       
     steps:
-      - name: Download git 
-        run: apt-get install git
       - uses: actions/checkout@v2
         with:
           repository: Ratio-Exchange/Ratio_Exchange
