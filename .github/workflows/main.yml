@@ -21,3 +21,4 @@ jobs:
         run: |
           ls /opt/coldfusion/cfusion/bin/
           echo $GITHUB_WORKSPACE
+          ls $GITHUB_WORKSPACE
