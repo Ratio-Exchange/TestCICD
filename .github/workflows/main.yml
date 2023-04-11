@@ -15,6 +15,10 @@ jobs:
       acceptEULA: 'YES'
       
     steps:
+      - name: git download 
+        run: |
+          apt update
+          apt install -y git
       - uses: actions/checkout@v3
       - name: Compilation CF Code
         #run: /opt/coldfusion/cfusion/bin/cfcompile.sh -cfruntimeuser root -webroot $GITHUB_WORKSPACE -dir $GITHUB_WORKSPACE
@@ -22,6 +26,4 @@ jobs:
           ls /opt/coldfusion/cfusion/bin/
           echo $GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE
-          cat /etc/os-release
-          lsb_release -a
-          hostnamectl
+       
