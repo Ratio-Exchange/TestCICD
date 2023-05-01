@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+
+group= 'com.ratio.exchange'
+archivesBaseName="ratio-exchange"
+version = "${System.env.VERSION}"
+
+sourceCompatibility = 1.8 
+targetCompatibility = 1.8
+
+task createArchive(type: Zip, dependsOn: assemble) {
+ from "./Release/"
+ archiveFileName= archivesBaseName + '-' + version + '.zip'
+  }
+
+
+publishing {
+    publications {
+        onboarding(MavenPublication){
+	groupId group
+	artifactId archivesBaseName
+	version version
+	artifact tasks.createArchive
+        }
+    }
+
+repositories {
+   maven {
+        name 'github'
+	if(project.version.endsWith('-SNAPSHOT')){
+	    url "https://maven.pkg.github.com/Ratio-Exchange/Ratio_Exchange"
+	   
+	   }
+	    else{
+	     url "https://maven.pkg.github.com/Ratio-Exchange/Ratio_Exchange"
+	    }
+	    credentials {
+	    username = "$System.env.GITHUB_ACTOR"
+	    password = "$System.env.GITHUB_TOKEN"
+	    }
+	       
+    }
+  } 
+}
+
